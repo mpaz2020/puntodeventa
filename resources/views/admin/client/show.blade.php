@@ -22,7 +22,7 @@
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Panel Administrador</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">Panel Administrador</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('clients.index') }}">clientes</a></li>
                     <li class="breadcrumb-item active" aria-current="page">{{ $client->name }}</li>
                 </ol>

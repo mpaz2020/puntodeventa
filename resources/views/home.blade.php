@@ -85,6 +85,18 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="card card-chart">
+                                    <div class="card-header">
+                                        <h4 class="text-center"> Ventas diarias</h4>
+                                    </div>
+                                    <div class="card-content">
+                                        <div class="ct-chart">
+                                            <canvas id="ventas_diarias" height="100"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="card card-chart">
                                     <div class="card-header">
@@ -105,18 +117,6 @@
                                     <div class="card-content">
                                         <div class="ct-chart">
                                             <canvas id="ventas"></canvas>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="card card-chart">
-                                    <div class="card-header">
-                                        <h4 class="text-center"> Ventas diarias</h4>
-                                    </div>
-                                    <div class="card-content">
-                                        <div class="ct-chart">
-                                            <canvas id="ventas_diarias" height="100"></canvas>
                                         </div>
                                     </div>
                                 </div>

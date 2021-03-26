@@ -22,7 +22,7 @@
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Panel Administrador</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">Panel Administrador</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('providers.index') }}">proveedores</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Registro de proveedores</li>
                 </ol>

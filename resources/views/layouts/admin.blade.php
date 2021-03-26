@@ -201,7 +201,7 @@
                             </a>
                             <div class="dropdown-divider"></div>
 
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                            <a class="dropdown-item" href="{{ route('login') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 <i class="fas fa-power-off text-primary"></i>
                                 Logout

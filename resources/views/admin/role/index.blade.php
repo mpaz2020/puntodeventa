@@ -31,12 +31,12 @@
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
-                roles del sistema
+                Roles del sistema
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Panel Administrador</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">roles del sistema</li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">Panel Administrador</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Roles del sistema</li>
                 </ol>
             </nav>
         </div>
@@ -44,7 +44,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title">roles del sistema</h4>
+                    <h4 class="card-title">Roles del sistema</h4>
                     <div class="btn-group">
                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-ellipsis-v"></i>

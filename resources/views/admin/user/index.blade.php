@@ -35,7 +35,7 @@
             </h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Panel Administrador</a></li>
+                    <li class="breadcrumb-item"><a href="{{route('home')}}">Panel Administrador</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Usuarios del sistema</li>
                 </ol>
             </nav>
@@ -76,6 +76,7 @@
                                                 <a href="{{ route('users.show', $user) }}">{{ $user->name }}</a>
                                             </td>
                                             <td>{{ $user->email }}</td>
+                                            @if ($user->id!==1)
                                             <td style="width: 50px;">
                                                 {!! Form::open(['route' => ['users.destroy', $user], 'method' => 'DELETE']) !!}
                                                 <a class="jsgrid-button jsgrid-edit-button"
@@ -90,6 +91,12 @@
 
                                                 {!! Form::close() !!}
                                             </td>
+                                            @else
+                                                <td>
+
+                                                </td>
+                                            @endif
+
                                         </tr>
                                     @endforeach
 

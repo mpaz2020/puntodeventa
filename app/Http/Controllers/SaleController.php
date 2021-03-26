@@ -7,11 +7,10 @@ use App\Sale;
 use App\Product;
 use App\Http\Requests\Sale\StoreRequest;
 use App\Http\Requests\Sale\UpdateRequest;
+use App\Printer as Impresora;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
-
 use Barryvdh\DomPDF\Facade as PDF;
-
 use Mike42\Escpos\PrintConnectors\FilePrintConnector;
 use Mike42\Escpos\Printer;
 use Mike42\Escpos\EscposImage;
@@ -125,20 +124,18 @@ class SaleController extends Controller
                 $subtotal += $saleDetail->quantity * $saleDetail->price - $saleDetail->quantity * $saleDetail->price * $saleDetail->discount / 100;
             }
 
-            $printer_name="";
-            $connector = new WindowsPrintConnector($printer_name);
+            $impresora=Impresora::all()[0];
+
+            $connector = new WindowsPrintConnector($impresora->name);
             $printer = new Printer($connector);
-            $printer->text("Hello World!\n");
-            $printer->text("Hello World!\n");
-            $printer->text("Hello World!\n");
-            $printer->text("Hello World!\n");
+
             $printer->text("Hello World!\n");
 
             $printer->cut();
-        } catch (\Throwable $th) {
-            return redirect()->back();
-        } finally {
             $printer->close();
+            return redirect()->back();
+
+        } catch (\Throwable $th) {
             return redirect()->back();
         }
     }
