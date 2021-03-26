@@ -119,7 +119,7 @@
                                             </p>
                                             <hr>
                                             <strong>
-                                                <i class="fas fa-address-card mr-1"></i>
+                                                <i class="fas fa-tag mr-1"></i>
                                                 Stock
                                             </strong>
                                             <p class="text-muted">
@@ -137,7 +137,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <strong>
-                                                <i class="fas fa-mobile mr-1"></i>
+                                                <i class="fas fa-money-bill mr-1"></i>
                                                 Precio
                                             </strong>
                                             <p class="text-muted">
@@ -145,7 +145,7 @@
                                             </p>
                                             <hr>
                                             <strong>
-                                                <i class="fas fa-envelope mr-1"></i>
+                                                <i class="fas fa-user-check mr-1"></i>
                                                 Estado
                                             </strong>
                                             <p class="text-muted">
@@ -153,7 +153,7 @@
                                             </p>
                                             <hr>
                                             <strong>
-                                                <i class="fas fa-map-marked-alt mr-1"></i>
+                                                <i class="fas fa-tags mr-1"></i>
                                                 Categoria
                                             </strong>
                                             <p class="text-muted">
@@ -161,11 +161,19 @@
                                             </p>
                                             <hr>
                                             <strong>
-                                                <i class="fas fa-map-marked-alt mr-1"></i>
+                                                <i class="fas fa-user-times mr-1"></i>
                                                 Proveedor
                                             </strong>
                                             <p class="text-muted">
                                                 {{ $product->provider->name}}
+                                            </p>
+                                            <hr>
+                                            <strong>
+                                                <i class="fas fa-barcode mr-1"></i>
+                                                Codigo de barras
+                                            </strong>
+                                            <p class="text-muted">
+                                                {!! DNS1D::getBarcodeHTML($product->code, 'EAN13'); !!}
                                             </p>
                                             <hr>
                                         </div>

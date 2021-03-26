@@ -49,7 +49,7 @@
 
                         <div class="form-group">
                             <label for="ruc_number">Numero de RUC</label>
-                            <input id="ruc_number" class="form-control" type="number" name="ruc_number" required>
+                            <input id="ruc_number" class="form-control" type="number" name="ruc_number" minlength="11" maxlength="11" required>
                         </div>
 
                         <div class="form-group">

@@ -13,11 +13,11 @@
 @endsection
 
 @section('create')
-    {{-- <li class="nav-item d-none d-lg-flex">
-    <a class="nav-link" href="{{route('categories.create')}}">
-      <span class="btn btn-primary">+ Crear Nuevo</span>
+<li class="nav-item d-done d-lg-flex">
+    <a class="nav-link" type="button" href="{{route('categories.create')}}">
+        <span class="btn btn-primary">+ Registrar categoria</span>
     </a>
-  </li> --}}
+</li>
 @endsection
 @section('options')
 @endsection

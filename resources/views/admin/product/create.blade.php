@@ -42,7 +42,11 @@
                                 required>
                         </div>
 
-
+                        <div class="form-group">
+                            <label for="code">Código de barras</label>
+                            <input id="code" class="form-control" type="text" name="code" minlength="8" maxlength="8" aria-describedby="helpId">
+                            <small class="text-muted">Campo opcional</small>
+                        </div>
 
                         <div class="form-group">
                             <label for="sell_price">Precio de venta</label>

@@ -17,6 +17,7 @@ class UpdateRequest extends FormRequest
         return [
             'name'=>'string|required|unique:products,name,'.$this->route('product')->id.'|max:255',
             // 'image'=>'required|dimensions:min_width=100,min_height=200',
+            'code'=>'nullable|string|min:8|max:8',
             'sell_price'=>'required',
             'category_id'=>'integer|required|exists:App\Category,id',
             'provider_id'=>'integer|required|exists:App\Provider,id',
@@ -33,6 +34,10 @@ class UpdateRequest extends FormRequest
 
             // 'image.string' => 'El valor no es correcto',
             // 'image.dimensions' => 'solo se permiten imagenes de 100x200 px',
+
+            'code.string' => 'El valor no es correcto',
+            'code.min' => 'se requiere de 8 digitos',
+            'code.max' => 'solo se permite 8 digitos',
 
             'sell_price.required' => 'el campo es requerido',
 

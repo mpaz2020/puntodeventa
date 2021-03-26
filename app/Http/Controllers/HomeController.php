@@ -30,7 +30,7 @@ class HomeController extends Controller
 
         $ventasdia=DB::select('SELECT DATE_FORMAT(v.sale_date,"%d/%m/%Y") AS dia, SUM(v.total) AS total FROM sales v WHERE v.status="VALID" GROUP BY v.sale_date ORDER BY DAY(v.sale_date) DESC LIMIT 15');
 
-        $totales=DB::select('SELECT (SELECT IFNULL(SUM(c.total),0) FROM purchases c WHERE c.status="VALID" AND DATE(c.purchase_date)=CURDATE()) AS totalcompra, (SELECT IFNULL(SUM(v.total),0) FROM sales v WHERE v.status="VALID" AND DATE(v.sale_date)=CURDATE()) AS totalventa');
+        $totales=DB::select('SELECT (SELECT IFNULL(SUM(c.total),0) FROM purchases c WHERE c.status="VALID" AND MONTH(c.purchase_date) = MONTH(CURDATE())) AS totalcompra, (SELECT IFNULL(SUM(v.total),0) FROM sales v WHERE v.status="VALID" AND MONTH(v.sale_date) = MONTH(CURDATE())) AS totalventa');
 
         $productosvendidos=DB::select('SELECT p.code AS code, SUM(dv.quantity) AS quantity, p.name AS name, p.id AS id, p.stock AS stock FROM products p
         INNER JOIN sale_details dv ON p.id=dv.product_id

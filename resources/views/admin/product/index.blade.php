@@ -14,6 +14,11 @@
 @endsection
 
 @section('create')
+<li class="nav-item d-done d-lg-flex">
+    <a class="nav-link" type="button" href="{{route('products.create')}}">
+        <span class="btn btn-primary">+ Registrar producto</span>
+    </a>
+</li>
 @endsection
 
 @section('options')

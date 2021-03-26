@@ -1,5 +1,6 @@
 <?php
 
+use App\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,10 +51,18 @@ Route::get('change_status/products/{product}', 'ProductController@change_status'
 Route::resource('users', 'UserController')->names('users');
 Route::resource('roles', 'RoleController')->names('roles');
 
+Route::get('get_products_by_barcode', 'ProductController@get_products_by_barcode')->name('get_products_by_barcode');
+Route::get('get_products_by_id', 'ProductController@get_products_by_id')->name('get_products_by_id');
+
 Route::get('/prueba', function () {
     return view('prueba');
 });
 
-Auth::routes();
+// Route::get('/barcode', function () {
+//     $products=Product::get();
+//     return view('admin.product.barcode',compact('products'));
+// });
+
+Auth::routes(['register'=>false]);
 
 Route::get('/home', 'HomeController@index')->name('home');

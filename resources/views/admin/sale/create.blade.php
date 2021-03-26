@@ -3,18 +3,21 @@
 @section('title', 'Registrar venta')
 
 @section('styles')
+    {!! Html::style('select/dist/css/bootstrap-select.min.css') !!}
 @endsection
 
 @section('create')
+    <li class="nav-item d-done d-lg-flex">
+        <a class="nav-link" type="button" data-toggle="modal" data-target="#exampleModal-2">
+            <span class="btn btn-warning">+ Registrar Cliente</span>
+        </a>
+    </li>
 @endsection
 
 @section('options')
-@endsection
+@endsection @section('preference')
 
-@section('preference')
-@endsection
-
-@section('content')
+@endsection @section('content')
     <div class="content-wrapper">
         <div class="page-header">
             <h3 class="page-title">
@@ -47,44 +50,69 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
-                            <label for="tax">Impuesto</label>
-                            <input id="tax" class="form-control" type="number" name="tax" aria-describedby="helpId"
-                                placeholder="%18">
-                        </div>
+
 
                         <div class="form-group">
-                            <label for="product_id">Producto</label>
-                            <select id="product_id" class="form-control" name="product_id">
-                                <option value="" disabled selected>Seleccione un producto</option>
-                                @foreach ($products as $product)
-                                    <option value="{{ $product->id }}_{{ $product->stock }}_{{ $product->sell_price }}">{{ $product->name }}</option>
-                                @endforeach
-                            </select>
+                            <label for="code">Código de barras</label>
+                            <input id="code" class="form-control" type="text" name="code">
                         </div>
 
-                        <div class="form-group">
-                            <label for="stock">Stock actual</label>
-                            <input id="stock" class="form-control" type="number" value="" disabled>
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <div class="form-group">
+                                    <label for="product_id">Producto</label>
+                                    <select id="product_id" class="selectpicker" data-live-search="true" name="product_id">
+                                        <option value="" disabled selected>Seleccione un producto</option>
+                                        @foreach ($products as $product)
+                                            <option
+                                                value="{{ $product->id }}_{{ $product->stock }}_{{ $product->sell_price }}">
+                                                {{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <div class="form-group">
+                                    <label for="stock">Stock actual</label>
+                                    <input id="stock" class="form-control" type="number" value="" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <div class="form-group">
+                                    <label for="price">Precio de venta</label>
+                                    <input id="price" class="form-control" type="number" name="price"
+                                        aria-describedby="helpId" disabled>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="quantity">Cantidad</label>
-                            <input id="quantity" class="form-control" type="number" name="quantity"
-                                aria-describedby="helpId">
+
+                        <div class="form-row">
+                            <div class="form-group col-md-4">
+                                <div class="form-group">
+                                    <label for="quantity">Cantidad</label>
+                                    <input id="quantity" class="form-control" type="number" name="quantity"
+                                        aria-describedby="helpId">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <div class="form-group">
+                                    <label for="tax">Impuesto (%)</label>
+                                    <input id="tax" class="form-control" type="number" name="tax" value="18"
+                                        aria-describedby="helpId">
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <div class="form-group">
+                                    <label for="discount">Porcentaje (%)</label>
+                                    <input id="discount" class="form-control" type="number" name="discount" value="0"
+                                        aria-describedby="helpId">
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label for="price">Precio de venta</label>
-                            <input id="price" class="form-control" type="number" name="price" aria-describedby="helpId"
-                                disabled>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="discount">Porcentaje de Descuento</label>
-                            <input id="discount" class="form-control" type="number" name="discount" value="0"
-                                aria-describedby="helpId">
-                        </div>
 
                         <div class="form-group">
                             <button type="button" id="agregar" class="btn btn-primary float-right">Agregar producto</button>
@@ -151,12 +179,46 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel-2">Registrar de cliente</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                {!! Form::open(['route' => 'clients.store', 'method' => 'POST']) !!}
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input id="name" class="form-control" type="text" name="name" aria-describedby="helpId" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dni">DNI</label>
+                        <input id="dni" class="form-control" type="number" name="dni" minlength="8" maxlength="8" aria-describedby="helpId" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Registrar</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
+                </div>
+
+                {!! Form::close() !!}
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
 
     {!! Html::script('melody/js/alerts.js') !!}
     {!! Html::script('melody/js/avgrund.js') !!}
+    {!! Html::script('select/dist/js/bootstrap-select.min.js') !!}
 
     <script>
         $(document).ready(function() {
@@ -176,7 +238,37 @@
             productos = document.getElementById('product_id').value.split('_');
             $("#price").val(productos[2])
             $("#stock").val(productos[1])
+            $("#code").val(productos[0])
         }
+
+        $(obtener_registro());
+
+        function obtener_registro(code) {
+            $.ajax({
+                url: "{{ route('get_products_by_barcode') }}",
+                type: 'GET',
+                data: {
+                    code: code,
+                },
+                success: function(data) {
+                    console.log(data);
+                    $("#price").val(data.sell_price);
+                    $("#stock").val(data.stock);
+                    $("#product_id").val(data.id + "_" + data.stock + "_" + data.sell_price);
+                }
+            });
+        }
+
+        $(document).on('keyup', '#code', function() {
+            var resultado = $(this).val();
+            if (resultado !== "") {
+                obtener_registro(resultado);
+            } else {
+                $("#product_id").val("");
+                $("#price").val("")
+                $("#stock").val("")
+            }
+        });
 
         function agregar() {
             productos = document.getElementById('product_id').value.split('_');
@@ -192,7 +284,17 @@
                 if (parseInt(stock) >= parseInt(quantity)) {
                     subtotal[cont] = quantity * price;
                     total = total + subtotal[cont];
-                    var fila = '<tr class="selected" id="fila' + cont +'"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont +                        ');"><i class="fa fa-times"></i></button></td><td><input type="hidden" id="product_id[]" name="product_id[]" value="' +                        product_id + '">' + producto + '</td><td><input type="hidden" id="price[]" name="price[]" value="' +                        parseFloat(price).toFixed(2) + '"><input type="number" class="form-control" id="price[]" value="' + parseFloat(price).toFixed(2) +                        '" disabled></td><td><input type="hidden" id="discount[]" name="discount[]" value="' +                            parseFloat(discount) + '"><input type="number" class="form-control" id="discount[]" value="' + parseFloat(discount) +'" disabled></td><td><input type="hidden" name="quantity[]" value="' + quantity +'"><input type="number" class="form-control" value="' + quantity +'" disabled></td><td align="right">S/' + parseFloat(subtotal[cont]).toFixed(2) + '</td></tr>';
+                    var fila = '<tr class="selected" id="fila' + cont +
+                        '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont +
+                        ');"><i class="fa fa-times"></i></button></td><td><input type="hidden" id="product_id[]" name="product_id[]" value="' +
+                        product_id + '">' + producto + '</td><td><input type="hidden" id="price[]" name="price[]" value="' +
+                        parseFloat(price).toFixed(2) + '"><input type="number" class="form-control" id="price[]" value="' +
+                        parseFloat(price).toFixed(2) +
+                        '" disabled></td><td><input type="hidden" id="discount[]" name="discount[]" value="' + parseFloat(
+                            discount) + '"><input type="number" class="form-control" id="discount[]" value="' + parseFloat(
+                            discount) + '" disabled></td><td><input type="hidden" name="quantity[]" value="' + quantity +
+                        '"><input type="number" class="form-control" value="' + quantity +
+                        '" disabled></td><td align="right">S/' + parseFloat(subtotal[cont]).toFixed(2) + '</td></tr>';
                     cont++;
                     limpiar();
                     totales();
